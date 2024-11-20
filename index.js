@@ -8,8 +8,6 @@ const { GoalNear, GoalGetToBlock } = require("mineflayer-pathfinder").goals;
 const blockCheckerInit = require("./utils/blockChecker");
 const itemHandlerInit = require("./utils/item");
 const produceManagerInit = require("./utils/produceManager");
-require("dotenv").config();
-const config = process.env;
 
 // Initialize variables
 let bot;
@@ -19,15 +17,22 @@ let mcData;
 let farmingInProgress = false; // Flag to track whether farming is in progress
 let isConnected = false;
 // Load and initialize data
-try {
-  if (!fs.existsSync("data.json")) {
-    fs.writeFileSync("data.json", JSON.stringify({}));
-  }
-} catch (err) {
+try
+{
+	//If files don't exist
+	if (!fs.existsSync("data.json")||!fs.existsSync("botdata.json"))
+	{
+		//Write placeholder files
+		fs.writeFileSync("data.json", JSON.stringify({}));
+		fs.writeFileSync("botdata.json",JSON.stringify({}));
+	}
+}
+catch (err) {
   console.error(err);
 }
 
 // Create bot function
+/*
 function createBot() {
   bot = mineflayer.createBot({
     host: config.host,
@@ -37,6 +42,35 @@ function createBot() {
     password: config.password || "",
     version: config.version || null,
   });
+ */ 
+ 
+ //Create a bot
+ function createBot()
+ {
+	//Read bot data
+	const botdata=JSON.parse(fs.readFileSync("botdata.json"));
+	if(!botdata||!botdata.host||!botdata.auth)
+	{
+		//Use default data
+		botdata.host="127.0.0.1";
+		botdata.port=12345;
+		botdata.auth="offline";
+		botdata.username="Farmbot";
+		botdata.password="";
+		botdata.version=null;
+		fs.writeFileSync("botdata.json",JSON.stringify(botdata));
+	}
+	
+	//Finally create a bot
+	bot=mineflayer.createBot({
+			host: botdata.host,
+			port: botdata.port,
+			auth: botdata.auth,
+			username: botdata.username,
+			password: botdata.password,
+			version: botdata.version			
+		})
+ 
 
   // Initialize utility instances
   const itemHandler = new itemHandlerInit(bot);
@@ -68,7 +102,8 @@ function createBot() {
         bot.chat(
           "set farm by !set startcords endcords dustbincords\neg: !set 1,2,3 4,5,6 7,8,9"
         );
-      } else {
+      } 
+	  else {
         if (!data.start || !data.end || !data.dustbin) {
           bot.chat(
             "set farm by !set startcords endcords dustbincords\neg: !set 1,2,3 4,5,6 7,8,9  "
@@ -586,7 +621,7 @@ function createBot() {
       farmingInProgress = false;
     }
   }
-}
+ }
 // Reconnect bot function
 function reconnect() {
   // return if bot is already connected
