@@ -26,6 +26,14 @@ Modify the `botdata.json` file to put the bot's authorization parameters.
  - `password`: The password of the Minecraft account.
  - `version`: The Client version of the Minecraft bot. if not given mineflayer autodetects
 
+If there is no such file, it will create it automatically with the default data:
+ - `host: "127.0.0.1"`
+ - `port: 12345`
+ - `auth: "offline"`
+ - `username: "Farmbot"`
+ - `password: ""` (empty)
+ - `version: null`
+
 ## Usage
 
 1. Run `node index.js` to start the bot.
