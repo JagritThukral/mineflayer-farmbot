@@ -1,7 +1,7 @@
 # Minecraft Wheat Farming Bot
 
 This project is a Minecraft bot that automates wheat farming tasks. It uses the Mineflayer library to connect to a Minecraft server and perform actions like tilling land, planting seeds, and harvesting crops and putting it in chest . The bot also manages its inventory, checks for valid block types, and handles disconnections and reconnections.
-I made this because wheat farming is only semi automatic through redstone
+
 
 ## Features
 
