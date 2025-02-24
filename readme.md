@@ -11,7 +11,9 @@ This project is a Minecraft bot that automates wheat farming tasks. It uses the 
 - Block type checking: The bot checks the type of each block in the specified farming area and performs the appropriate action.
 - Disconnection handling: The bot attempts to reconnect every 20 seconds if it gets disconnected.
 - Chat commands: The bot listens for chat commands and responds to commands like `!help`, `!exit`, `!enable`, `!disable`, and `!set`. These commands allow users to interact with the bot and control its behavior.
+## prerequisites
 
+1. nodejs
 ## Installation
 
 1. Clone this repository.
