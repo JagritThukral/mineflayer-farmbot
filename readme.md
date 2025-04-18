@@ -18,13 +18,23 @@ This project is a Minecraft bot that automates wheat farming tasks. It uses the 
 
 1. Clone this repository.
 2. Run `npm install` to install the required dependencies.
-3. Create a `.env` file in the root directory and set the following environment variables:
-   - `host`: The IP address of the Minecraft server. (required)
-   - `port`: The port number of the Minecraft server.
-   - `auth`: The authentication method for the Minecraft server. (required)
-   - `username`: The username of the Minecraft account.
-   - `password`: The password of the Minecraft account.
-   - `version`: The Client version of the Minecraft bot. if not given mineflayer autodetects
+
+### Authorization
+Modify the `botdata.json` file to put the bot's authorization parameters.
+ - `host`: The IP address of the Minecraft server. (required)
+ - `port`: The port number of the Minecraft server.
+ - `auth`: The authentication method for the Minecraft server. (required)
+ - `username`: The username of the Minecraft account.
+ - `password`: The password of the Minecraft account.
+ - `version`: The Client version of the Minecraft bot. if not given mineflayer autodetects
+
+If there is no such file, it will create it automatically with the default data:
+ - `host: "127.0.0.1"`
+ - `port: 12345`
+ - `auth: "offline"`
+ - `username: "Farmbot"`
+ - `password: ""` (empty)
+ - `version: null`
 
 ## Usage
 
